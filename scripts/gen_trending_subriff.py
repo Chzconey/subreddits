@@ -13,7 +13,7 @@ from collections import Counter
 BASE_URL = "https://subriff.com/Home/GetSubreddits"
 SIZE_FILTERS = ["medium-small", "medium", "large", "xlarge"]
 SORT_PERIODS = ["daily", "weekly"]
-FINAL_OUTPUT_LIMIT = 35
+FINAL_OUTPUT_LIMIT = 100
 
 
 def fetch_subreddits(size_filter: str, sort_by: str) -> list[str]:
