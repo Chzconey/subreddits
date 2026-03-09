@@ -28,7 +28,7 @@ def fetch_subreddits(size_filter: str, sort_by: str) -> list[str]:
         "sortDirection": "",
         "dateFilter": "all",
         "allowsPromotion": "false",
-        "nsfw": "false",
+        "nsfw": "true",
     }
     response = requests.get(BASE_URL, params=params, timeout=30)
     response.raise_for_status()
@@ -37,15 +37,19 @@ def fetch_subreddits(size_filter: str, sort_by: str) -> list[str]:
     names = []
     for sub in data.get("subreddits", []):
         # Skip if any NSFW flag is true
+         #  nsfw = ""
         if (
             sub.get("isNsfw")
             or sub.get("internal_IsNsfw")
             or sub.get("suggested_Internal_IsNsfw")
         ):
-            continue
-        name = sub.get("displayName", "")
-        if name:
-            names.append(name)
+ #     nsfw = "true"
+     #       continue
+            name = sub.get("displayName", "")
+            if name:
+         #       print(f"getting {name}")
+          #      if nsfw:
+                names.append(name)
     return names
 
 
